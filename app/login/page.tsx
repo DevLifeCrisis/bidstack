@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Wrench, Eye, EyeOff } from "lucide-react";
 import { saveUser } from "@/lib/storage";
+import { isAdminCredentials, ADMIN_PROFILE } from "@/lib/admin";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -19,24 +20,26 @@ export default function LoginPage() {
     setLoading(true);
     setError("");
     
-    // Simulate auth — in production this would hit Supabase
-    await new Promise(r => setTimeout(r, 800));
-    
-    if (email && password.length >= 6) {
+    await new Promise(r => setTimeout(r, 600));
+
+    if (isAdminCredentials(email, password)) {
+      saveUser(ADMIN_PROFILE);
+      router.push("/dashboard");
+    } else if (email && password.length >= 6) {
       saveUser({
         id: `user_${Date.now()}`,
         email,
         name: email.split('@')[0].replace(/[._]/g, ' ').replace(/\b\w/g, c => c.toUpperCase()),
         companyName: 'My Contracting Company',
-        companyPhone: '(555) 000-0000',
+        companyPhone: '',
         companyEmail: email,
-        companyAddress: '123 Main St, Your City, ST 00000',
+        companyAddress: '',
         trade: 'electrical',
         plan: 'monthly',
       });
       router.push("/dashboard");
     } else {
-      setError("Invalid email or password. Try any email + 6+ char password.");
+      setError("Invalid email or password.");
       setLoading(false);
     }
   };
@@ -105,9 +108,7 @@ export default function LoginPage() {
           </div>
         </div>
 
-        <p className="text-center text-xs text-zinc-600 mt-6">
-          Demo: any email + any 6+ char password
-        </p>
+
       </div>
     </div>
   );
