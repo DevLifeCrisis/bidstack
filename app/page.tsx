@@ -34,8 +34,17 @@ export default function LandingPage() {
       </nav>
 
       {/* Hero */}
-      <section className="pt-24 pb-20 px-6">
-        <div className="max-w-4xl mx-auto text-center">
+      <section
+        className="pt-24 pb-20 px-6 relative overflow-hidden"
+        style={{
+          backgroundImage: 'url(https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=80)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center 30%',
+        }}
+      >
+        {/* Dark overlay */}
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(10,10,11,0.82) 0%, rgba(10,10,11,0.75) 60%, rgba(10,10,11,0.97) 100%)' }} />
+        <div className="relative z-10 max-w-4xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full text-sm" style={{ background: '#f9731620', border: '1px solid #f9731640', color: '#fb923c' }}>
             <Zap size={14} />
             AI-Powered Bid Writing for Specialty Trades
@@ -60,6 +69,7 @@ export default function LandingPage() {
           <p className="text-sm text-zinc-500 mt-4">14-day free trial • $49/mo after • Cancel anytime</p>
         </div>
       </section>
+
 
       {/* Social Proof */}
       <section className="py-12 px-6" style={{ borderTop: '1px solid #27272a', borderBottom: '1px solid #27272a' }}>
@@ -139,22 +149,38 @@ export default function LandingPage() {
           </div>
           <div className="grid md:grid-cols-4 gap-4">
             {[
-              { icon: <Zap size={28} />, trade: "Electrical", items: ["Panel upgrades", "Rough-in wiring", "Service entrance", "EV charger install", "Generator hookup"] },
-              { icon: <Droplets size={28} />, trade: "Plumbing", items: ["Water heater swap", "Remodel rough-in", "Drain/waste/vent", "Fixture install", "Sewer line work"] },
-              { icon: <Wind size={28} />, trade: "HVAC", items: ["System replacement", "Duct install", "Mini-split install", "Commercial rooftop", "Preventive maint."] },
-              { icon: <Paintbrush size={28} />, trade: "Painting", items: ["Interior repaint", "Exterior full", "Cabinet refinish", "Epoxy floor coat", "Commercial spaces"] },
+              { icon: <Zap size={28} />, trade: "Electrical", img: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=600&q=80", items: ["Panel upgrades", "Rough-in wiring", "Service entrance", "EV charger install", "Generator hookup"] },
+              { icon: <Droplets size={28} />, trade: "Plumbing", img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80", items: ["Water heater swap", "Remodel rough-in", "Drain/waste/vent", "Fixture install", "Sewer line work"] },
+              { icon: <Wind size={28} />, trade: "HVAC", img: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&q=80", items: ["System replacement", "Duct install", "Mini-split install", "Commercial rooftop", "Preventive maint."] },
+              { icon: <Paintbrush size={28} />, trade: "Painting", img: "https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?w=600&q=80", items: ["Interior repaint", "Exterior full", "Cabinet refinish", "Epoxy floor coat", "Commercial spaces"] },
             ].map((t) => (
-              <div key={t.trade} className="card p-6">
-                <div className="mb-4" style={{ color: '#f97316' }}>{t.icon}</div>
-                <h3 className="text-white font-bold text-lg mb-4">{t.trade}</h3>
-                <ul className="space-y-2">
-                  {t.items.map((item) => (
-                    <li key={item} className="flex items-center gap-2 text-sm text-zinc-400">
-                      <CheckCircle size={13} style={{ color: '#22c55e', flexShrink: 0 }} />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+              <div key={t.trade} className="card overflow-hidden">
+                {/* Trade photo */}
+                <div
+                  style={{
+                    height: 140,
+                    backgroundImage: `url(${t.img})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    position: 'relative',
+                  }}
+                >
+                  <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.55))' }} />
+                  <div style={{ position: 'absolute', bottom: 12, left: 16, display: 'flex', alignItems: 'center', gap: 8 }}>
+                    <span style={{ color: '#f97316' }}>{t.icon}</span>
+                    <span style={{ color: '#fff', fontWeight: 700, fontSize: 17 }}>{t.trade}</span>
+                  </div>
+                </div>
+                <div className="p-5">
+                  <ul className="space-y-2">
+                    {t.items.map((item) => (
+                      <li key={item} className="flex items-center gap-2 text-sm text-zinc-400">
+                        <CheckCircle size={13} style={{ color: '#22c55e', flexShrink: 0 }} />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             ))}
           </div>
@@ -272,15 +298,24 @@ export default function LandingPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 px-6" style={{ background: '#0d0d0f', borderTop: '1px solid #27272a' }}>
-        <div className="max-w-3xl mx-auto text-center">
+      <section
+        className="py-20 px-6 relative overflow-hidden"
+        style={{
+          backgroundImage: 'url(https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=80)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center 60%',
+          borderTop: '1px solid #27272a',
+        }}
+      >
+        <div className="absolute inset-0" style={{ background: 'rgba(10,10,11,0.88)' }} />
+        <div className="relative z-10 max-w-3xl mx-auto text-center">
           <h2 className="text-4xl font-bold text-white mb-6">Ready to Win More Bids?</h2>
           <p className="text-zinc-400 text-lg mb-10">Join 2,400+ specialty subs using BidStack to write professional proposals in minutes.</p>
           <Link href="/signup" className="btn-primary text-base px-10 py-4">
             Start Your Free Trial
             <ArrowRight size={20} />
           </Link>
-          <p className="text-zinc-600 text-sm mt-4">14 days free · No credit card required · Cancel anytime</p>
+          <p className="text-zinc-400 text-sm mt-4">14 days free · No credit card required · Cancel anytime</p>
         </div>
       </section>
 
