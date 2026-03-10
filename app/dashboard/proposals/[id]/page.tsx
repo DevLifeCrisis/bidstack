@@ -5,9 +5,9 @@ import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { getProposal, saveProposal } from "@/lib/storage";
 import { Proposal, ProposalStatus } from "@/types";
-import { generateProposalText } from "@/lib/ai-proposal";
-import { ArrowLeft, Download, Send, CheckCircle, XCircle, Edit3, Printer } from "lucide-react";
+import { ArrowLeft, Send, CheckCircle, XCircle, Edit3, Printer } from "lucide-react";
 import Link from "next/link";
+import ProposalDocument from "@/components/ProposalDocument";
 
 const STATUS_BADGE: Record<string, string> = {
   draft: 'badge-draft',
@@ -41,8 +41,6 @@ export default function ProposalDetailPage() {
   };
 
   if (!proposal) return null;
-
-  const proposalText = generateProposalText(proposal);
 
   return (
     <DashboardLayout>
@@ -146,20 +144,9 @@ export default function ProposalDetailPage() {
         </div>
       </div>
 
-      {/* Print view */}
-      <div className="hidden print-only p-10" style={{ fontFamily: 'monospace', whiteSpace: 'pre-wrap', fontSize: 12, lineHeight: 1.6, color: '#000', background: '#fff' }}>
-        {proposalText}
-      </div>
-
-      {/* Proposal Preview */}
-      <div className="mx-8 mb-8 no-print card p-8">
-        <h2 className="text-sm font-semibold text-white mb-4 flex items-center gap-2">
-          <Download size={14} style={{ color: '#f97316' }} />
-          Proposal Preview
-        </h2>
-        <pre className="text-xs text-zinc-400 leading-relaxed whitespace-pre-wrap overflow-x-auto" style={{ fontFamily: 'monospace', maxHeight: 500, overflowY: 'auto' }}>
-          {proposalText}
-        </pre>
+      {/* Proposal Document — shown on screen + printed */}
+      <div className="mx-8 mb-8">
+        <ProposalDocument proposal={proposal} />
       </div>
     </DashboardLayout>
   );
