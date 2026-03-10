@@ -132,7 +132,7 @@ export default function DemoPage() {
         <div className="text-center mt-8">
           <p className="text-zinc-500 mb-4">Ready to create proposals like this for your jobs?</p>
           <Link href="/signup" className="btn-primary text-base px-8 py-3">
-            Start Free Trial — No Card Required
+            Start Free Trial
           </Link>
         </div>
       </div>

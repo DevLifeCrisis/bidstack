@@ -68,7 +68,7 @@ function SignupForm() {
         <p className="text-zinc-400 mb-10 leading-relaxed">Join 2,400+ specialty subs who use BidStack to write professional proposals in minutes.</p>
         <ul className="space-y-4">
           {[
-            "14-day free trial — no credit card required",
+            "14-day free trial",
             "Professional AI-written proposals",
             "Trade-specific scope templates",
             "Win/loss tracking & analytics",

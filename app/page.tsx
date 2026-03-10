@@ -58,7 +58,7 @@ export default function LandingPage() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link href="/signup" className="btn-primary text-base px-8 py-3">
-              Start Free — No Card Required
+              Start Free Trial
               <ArrowRight size={18} />
             </Link>
             <Link href="/demo" className="btn-secondary text-base px-8 py-3">
@@ -315,7 +315,7 @@ export default function LandingPage() {
             Start Your Free Trial
             <ArrowRight size={20} />
           </Link>
-          <p className="text-zinc-400 text-sm mt-4">14 days free · No credit card required · Cancel anytime</p>
+          <p className="text-zinc-400 text-sm mt-4">14-day free trial · Cancel anytime</p>
         </div>
       </section>
 
