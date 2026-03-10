@@ -196,7 +196,7 @@ export default function LandingPage() {
           <div className="space-y-6">
             {[
               { step: "01", title: "Enter Project Details", desc: "Client name, job address, scope of work, materials, and labor. We have pre-built templates for every common job type." },
-              { step: "02", title: "AI Generates Your Proposal", desc: "GPT-4 writes a professional, client-facing proposal with your branding, itemized costs, and a clear value summary." },
+              { step: "02", title: "AI Generates Your Proposal", desc: "AI writes a professional, client-facing proposal with your branding, itemized costs, and a clear value summary." },
               { step: "03", title: "Review, Edit & Send", desc: "Preview the PDF, make any tweaks, and send directly from BidStack. The client gets a professional proposal link." },
               { step: "04", title: "Track & Follow Up", desc: "See when the client opens it. Auto-follow-up goes out at day 3. Mark accepted or declined and track your win rate." },
             ].map((s) => (
